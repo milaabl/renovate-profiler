@@ -113,7 +113,11 @@ export async function renovateRepository(
     //@ts-ignore
     mergeChildConfigCalls : global.mergeChildConfigCalls,
     //@ts-ignore
-    applyPackageRulesCalls : global.applyPackageRulesCalls
+    applyPackageRulesCalls : global.applyPackageRulesCalls,
+    // @ts-ignore
+    applyPackageRulesTotalExecutionTime: global.applyPackageRulesTotalExecutionTime,
+    //@ts-ignore
+    mergeChildConfigCallsTotalExecutionTime: global.mergeChildConfigCallsTotalExecutionTime
   }, 'mergeChildConfigCalls and applyPackageRulesCalls');
   printRequestStats();
   printLookupStats();

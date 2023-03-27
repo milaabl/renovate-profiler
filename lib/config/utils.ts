@@ -13,6 +13,16 @@ export function mergeChildConfig<
   }
   // @ts-ignore
   global.mergeChildConfigCalls = global.mergeChildConfigCalls + 1;
+
+  const startTime = Date.now();
+
+  // @ts-ignore
+  if (!global.mergeChildConfigCallsTotalExecutionTime) {
+    // @ts-ignore
+    global.mergeChildConfigCallsTotalExecutionTime = 0;
+  }
+
+
   logger.trace({ parent, child }, `mergeChildConfig`);
   if (!child) {
     return parent as never;
@@ -48,5 +58,7 @@ export function mergeChildConfig<
       );
     }
   }
+  // @ts-ignore
+  global.mergeChildConfigCallsTotalExecutionTime += Date.now() - startTime;
   return { ...config, ...config.force };
 }

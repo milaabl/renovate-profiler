@@ -70,6 +70,15 @@ export function applyPackageRules<T extends PackageRuleInputConfig>(
   }
   // @ts-ignore
   global.applyPackageRulesCalls = global.applyPackageRulesCalls + 1;
+
+
+  // @ts-ignore
+  if (!global.applyPackageRulesTotalExecutionTime) {
+    // @ts-ignore
+    global.applyPackageRulesTotalExecutionTime = 0;
+  }
+
+  const startTime = Date.now();
   let config = { ...inputConfig };
   const packageRules = config.packageRules ?? [];
   logger.trace(
@@ -99,5 +108,8 @@ export function applyPackageRules<T extends PackageRuleInputConfig>(
       delete config.matchCurrentVersion;
     }
   }
+
+  // @ts-ignore
+  global.applyPackageRulesTotalExecutionTime += Date.now() - startTime;
   return config;
 }
