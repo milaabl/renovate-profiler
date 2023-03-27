@@ -63,6 +63,13 @@ function matchesRule(
 export function applyPackageRules<T extends PackageRuleInputConfig>(
   inputConfig: T
 ): T {
+  // @ts-ignore
+  if (!global.applyPackageRulesCalls) {
+    // @ts-ignore
+    global.applyPackageRulesCalls = 0;
+  }
+  // @ts-ignore
+  global.applyPackageRulesCalls = global.applyPackageRulesCalls + 1;
   let config = { ...inputConfig };
   const packageRules = config.packageRules ?? [];
   logger.trace(

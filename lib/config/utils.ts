@@ -6,6 +6,13 @@ export function mergeChildConfig<
   T extends Record<string, any>,
   TChild extends Record<string, any> | undefined
 >(parent: T, child: TChild): T & TChild {
+  // @ts-ignore
+  if (!global.mergeChildConfigCalls) {
+    // @ts-ignore
+    global.mergeChildConfigCalls = 0;
+  }
+  // @ts-ignore
+  global.mergeChildConfigCalls = global.mergeChildConfigCalls + 1;
   logger.trace({ parent, child }, `mergeChildConfig`);
   if (!child) {
     return parent as never;

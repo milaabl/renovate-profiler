@@ -108,6 +108,13 @@ export async function renovateRepository(
   }
   const splits = getSplits();
   logger.debug(splits, 'Repository timing splits (milliseconds)');
+  // @ts-ignore
+  logger.info({
+    //@ts-ignore
+    mergeChildConfigCalls : global.mergeChildConfigCalls,
+    //@ts-ignore
+    applyPackageRulesCalls : global.applyPackageRulesCalls
+  }, 'mergeChildConfigCalls and applyPackageRulesCalls');
   printRequestStats();
   printLookupStats();
   printDnsStats();
