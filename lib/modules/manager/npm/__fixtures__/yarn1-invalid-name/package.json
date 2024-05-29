@@ -11,7 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "@fluentui/node_modules/react": "npm:react@^17.0.0",
-    "@fluentui/react-focus": "^8.8.5",
+    "@fluentui/react-focus": "^8.9.1",
     "react": "^18.2.0"
   }
 }
